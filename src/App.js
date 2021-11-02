@@ -3,8 +3,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h3>Kody's Test</h3>
+	<>
+	  <h3>Kodys Test</h3>
+	<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,6 +21,8 @@ function App() {
         </a>
       </header>
     </div>
+	<div className="Timer"/>
+	</>
   );
 }
 

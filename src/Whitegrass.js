@@ -13,7 +13,7 @@ class Whitegrass extends React.Component {
     }
 
     componentDidMount() {
-      this.interval = setInterval(() => this.tick(), 1000);
+      this.interval = setInterval(() => this.tick(), 20000);
     }
 
     componentWillUnmount() {
@@ -24,7 +24,13 @@ class Whitegrass extends React.Component {
       return (
         <div>
 		  Date: {this.state.date}
-		  https://whitegrass.com/video1.jpg?t=
+		  https://whitegrass.com/video1.jpg?t={this.state.date}
+		  <p>
+		  	<img src="https://whitegrass.com/video.jpg?t={this.state.date}" id="img1" />
+		  </p>
+		  <p>
+			<img src="https://whitegrass.com/video1.jpg?t={this.state.date}" width="1280" height="720" id="img2" />
+		  </p>
         </div>
       );
     }

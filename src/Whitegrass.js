@@ -1,18 +1,18 @@
 import React from 'react';
 
 class Whitegrass extends React.Component {
-	static img1_src = "https://whitegrass.com/video.jpg?t=";
-	static img2_src = "https://whitegrass.com/video.jpg1?t=";
 	
     constructor(props) {
       super(props);
       this.state = { date: 0 };
+	  this.props = { img1_src: 'https://whitegrass.com/video.jpg?t=', img2_src: 'https://whitegrass.com/video1.jpg?t=' }
     }
 	
     tick() {
       this.setState(state => ({
 		  date: new Date().getTime()
       }));
+	  this.props.img2_src = "https://whitegrass.com/video.jpg?t="+this.state.date;
     }
 
     componentDidMount() {
@@ -33,8 +33,9 @@ class Whitegrass extends React.Component {
 		  	<img src="{this.img1_src}+{this.state.date}" id="img1" />
 		  </p>
 		  <h3> Weiss Knob Slope Webcam </h3>
+		  <h3>{this.img2_src}</h3>
 		  <p>
-			<img src="{this.img2_src}+{this.state.date}" width="1280" height="720" id="img2" />
+			<img src="{this.img2_src}" width="1280" height="720" id="img2" />
 		  </p>
         </div>
       );

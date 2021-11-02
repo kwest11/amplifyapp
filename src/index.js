@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Timer from './Timer';
+import Whitegrass from './Whitegrass';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -10,7 +11,7 @@ ReactDOM.render(
 	<>
 	  	<h3>Kodys Test</h3>
 		<App />
-		<Timer />
+		<Whitegrass />
 	</>
   </React.StrictMode>,
   document.getElementById('root')

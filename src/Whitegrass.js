@@ -8,7 +8,7 @@ class Whitegrass extends React.Component {
 	
     tick() {
       this.setState(state => ({
-		  date: new Date().getTime();
+		  date: new Date().getTime()
       }));
     }
 

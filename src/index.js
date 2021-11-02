@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <!-- <App /> -->
     <Timer />
   </React.StrictMode>,
   document.getElementById('root')

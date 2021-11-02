@@ -7,7 +7,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-	<App />
+	<>
+	  	<h3>Kodys Test</h3>
+		<App />
+		<Timer />
+	</>
   </React.StrictMode>,
   document.getElementById('root')
 );

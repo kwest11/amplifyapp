@@ -9,7 +9,7 @@ const images = [
 class Whitegrass extends React.Component {
 	
 	static images = [
-	  { url: "https://whitegrass.com/video.jpg?t=0" },
+	  { url: "https://whitegrass.com/video.jpg?t=" },
 	  { url: "https://whitegrass.com/video1.jpg?t=" }
 	];
 	
@@ -41,6 +41,7 @@ class Whitegrass extends React.Component {
         <div>
 		  Date: {this.state.date}
         </div>
+		  <h1> Whats it like at Whitegrass? </h1>
 	<SimpleImageSlider
       	width={896}
       	height={504}

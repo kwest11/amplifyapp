@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Timer from './Timer';
 import Whitegrass from './Whitegrass';
+import CanaanWebcams from './CanaanWebcams';
 
 
 ReactDOM.render(
@@ -12,6 +13,7 @@ ReactDOM.render(
 	<>
 		<App />
 		<Whitegrass />
+		<CanaanWebcams />
 	</>
   </React.StrictMode>,
   document.getElementById('root')

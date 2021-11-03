@@ -1,4 +1,10 @@
 import React from 'react';
+import SimpleImageSlider from "react-simple-image-slider";
+
+const images = [
+  { url: "https://whitegrass.com/video.jpg?t=0" },
+  { url: "https://whitegrass.com/video1.jpg?t=" }
+];
 
 class Whitegrass extends React.Component {
 	
@@ -31,19 +37,18 @@ class Whitegrass extends React.Component {
     render() {
 	  
       return (
+		<>
         <div>
 		  Date: {this.state.date}
-		  <h3>Gandalfs Webcam</h3>
-		  <h3>{this.props.img1_src}</h3>
-		  <p>
-		  	<img src={this.props.img1_src} id="img1" />
-		  </p>
-		  <h3> Weiss Knob Slope Webcam </h3>
-		  <h3>{this.props.img2_src}</h3>
-		  <p>
-			<img src={this.props.img2_src} width="1280" height="720" id="img2" />
-		  </p>
         </div>
+	<SimpleImageSlider
+      	width={896}
+      	height={504}
+      	images={images}
+      	showBullets={true}
+      	showNavs={true}
+    	  />
+		</>
       );
     }
 }

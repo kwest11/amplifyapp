@@ -10,7 +10,7 @@ class CanaanWebcams extends React.Component {
       autoPlay={true}
       controls={false}
       width="100%"
-      height="auto"
+      height="auto" 
     />
     </div>;
   }

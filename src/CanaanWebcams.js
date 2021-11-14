@@ -9,7 +9,7 @@ class CanaanWebcams extends React.Component {
       src="https://55507e0501d25.streamlock.net/live/canaanresortbase.stream/playlist.m3u8"
       autoPlay={true}
       controls={false}
-      width="100%"
+      width="75%"
       height="auto" 
     />
     </div>;

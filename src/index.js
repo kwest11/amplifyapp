@@ -11,7 +11,7 @@ import CanaanWebcams from './CanaanWebcams';
 ReactDOM.render(
   <React.StrictMode>
 	<>
-		<App />
+		//<App />
 		<Whitegrass />
 		<CanaanWebcams />
 	</>

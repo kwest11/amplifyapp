@@ -1,25 +1,27 @@
+import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import '@aws-amplify/ui-react/styles.css';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import { AmplifyProvider } from '@aws-amplify/ui-react';
+import { Text, useTheme } from '@aws-amplify/ui-react';
 
-function App() {
+function App({ isPassedToWithAuthenticator, signOut, user }) {
   return (
+	<AmplifyProvider>
+	<>
+	<h1>Hello {user.username}</h1>  
 	<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+	  <button onClick={signOut}>Sign out</button>
     </div>
+	</>
+	</AmplifyProvider>
   );
 }
 
-export default App;
+const MyComponent = ({ children }) => {
+  const { tokens } = useTheme();
+  return <Text color={tokens.colors.font.tertiary}>{children}</Text>;
+};
+
+export default withAuthenticator(App);

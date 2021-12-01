@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
 import reportWebVitals from './reportWebVitals';
 import Timer from './Timer';
 import Whitegrass from './Whitegrass';
 import CanaanWebcams from './CanaanWebcams';
 
+Amplify.configure(config);
+
 
 ReactDOM.render(
   <React.StrictMode>
 	<>
-		//<App />
+		<App />
 		<Whitegrass />
 		<CanaanWebcams />
 	</>

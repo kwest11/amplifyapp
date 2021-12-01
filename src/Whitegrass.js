@@ -16,14 +16,13 @@ class Whitegrass extends React.Component {
     constructor(props) {
       super(props);
       this.state = { date: 0 };
-	  this.props = { img2_src: 'https://whitegrass.com/video1.jpg?t=' , img1_src : 'https://whitegrass.com/video.jpg?t='}
+	  this.props = { img2_src: 'https://whitegrass.com/video1.jpg?t='+this.state.date , img1_src : 'https://whitegrass.com/video.jpg?t='+this.state.date}
     }
 	
     tick() {
       this.setState(state => ({
 		  date: new Date().getTime()
       }));
-	  this.props.img2_src = "https://whitegrass.com/video.jpg?t="+this.state.date;
     }
 
     componentDidMount() {

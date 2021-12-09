@@ -3,26 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '@aws-amplify/ui-react/styles.css';
 import App from './App';
-import Amplify from 'aws-amplify';
-import config from './aws-exports';
 import reportWebVitals from './reportWebVitals';
-import Timer from './Timer';
-import Whitegrass from './Whitegrass';
-import SkiingWebcams from './skiingWebcams';
-import { Heading, Flex, Text, Divider } from '@aws-amplify/ui-react';
-
-Amplify.configure(config);
 
 
 ReactDOM.render(
   <React.StrictMode>
-	<>
-	  <Flex direction="column">
-		<App />
-		<Divider />
-		<SkiingWebcams />
-	  </Flex>
-	</>
+    <>
+      <App />
+    </>
   </React.StrictMode>,
   document.getElementById('root')
 );

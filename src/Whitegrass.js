@@ -1,29 +1,21 @@
 import React from 'react';
-import SimpleImageSlider from "react-simple-image-slider";
 import '@aws-amplify/ui-react/styles.css';
-import { Heading, View, Image, Flex, Text, Divider, Link } from '@aws-amplify/ui-react';
-
-const images = [
-  { url: "https://whitegrass.com/video.jpg?t=0" },
-  { url: "https://whitegrass.com/video1.jpg?t=" }
-];
+import {View, Image, Divider } from '@aws-amplify/ui-react';
 
 class Whitegrass extends React.Component {
 	
-	static images = [
-	  { url: "https://whitegrass.com/video.jpg?t=" },
-	  { url: "https://whitegrass.com/video1.jpg?t=" }
-	];
-	
     constructor(props) {
       super(props);
-      this.state = { date: 0 };
-	  this.props = { img2_src: 'https://whitegrass.com/video1.jpg?t=0' , img1_src : 'https://whitegrass.com/video.jpg?t='+this.state.date}
+      this.state = { 
+      img_src: 'https://whitegrass.com/video.jpg?t=0',
+      img1_src: 'https://whitegrass.com/video1.jpg?t=0'
+        };
     }
 	
     tick() {
       this.setState(state => ({
-		  date: new Date().getTime()
+      img_src: 'https://whitegrass.com/video.jpg?t='+ new Date().getTime(),
+      img1_src: 'https://whitegrass.com/video1.jpg?t='+ new Date().getTime(),
       }));
     }
 
@@ -39,13 +31,22 @@ class Whitegrass extends React.Component {
 	  
       return (
 		<>
-		  <h1>Whitegrass</h1>
-<View width="800px" height="400px" boxShadow="8px 6px 6px 0 #ccc">
+<View width={this.props.width} height={this.props.height} boxShadow="8px 6px 6px 0 #ccc">
+  <Image
+    width="105%"
+    height="105%"
+    objectFit="cover"
+		  src={this.state.img_src}
+    alt="whitegrass 1"
+  />
+</View>
+<Divider orientation="vertical" />
+<View width={this.props.width} height={this.props.height} boxShadow="8px 6px 6px 0 #ccc">
   <Image
     width="100%"
     height="100%"
     objectFit="cover"
-		  src="https://whitegrass.com/video1.jpg?t=0"
+		  src={this.state.img1_src}
     alt="whitegrass 1"
   />
 </View>

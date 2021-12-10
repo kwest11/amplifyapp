@@ -22,12 +22,10 @@ class Weather extends React.Component {
   fetchWeather(apiUrl) {
     console.log('Fetching weather' + apiUrl);
     this.fetchApi(apiUrl);
-    this.updateWeatherImage();
 
     if (this.state.weatherIcon && this.state.apiData.weatherIcon > 0) {
-      this.state.weatherIcon = `https://openweathermap.org/img/w/13d.png`
+      this.setState( {weatherIcon: `https://openweathermap.org/img/w/13d.png` })
     } 
-    console.log('Weather Icon:' + this.state.weatherIcon)
   }
 
   fetchApi = (url) => {
@@ -41,14 +39,15 @@ class Weather extends React.Component {
       .catch(err => console.error(err))
   }
 
-  updateWeatherImage() {
-
-  }
-
   // Side effect;  May need to change "apiUrl" at end.  this causes it to only change when apiUrl changes.  lets look at using Timer
   componentDidMount() {
     this.fetchWeather(this.state.apiUrl);
+    this.interval = setInterval(() => this.fetchApi(), 500000);
   }
+
+   componentWillUnmount() {
+      clearInterval(this.interval);
+    }
 
   render() {
     return <div className="App">
@@ -56,7 +55,7 @@ class Weather extends React.Component {
 
         <div className="card mt-3 mx-auto" style={{ width: '60vw' }}>
           {this.state.apiData.main ? (
-            <div class="card-body text-center">
+            <div className="card-body text-center">
               <img
                 src={this.state.weatherIcon}
                 alt="weather status icon"
@@ -75,7 +74,7 @@ class Weather extends React.Component {
               <div className="row mt-4">
                 <div className="col-md-6">
                   <p>
-                    <i class="fas fa-temperature-low "></i>{' '}
+                    <i className="fas fa-temperature-low "></i>{' '}
                     <strong>
                       Min Temp: {this.state.apiData.main.temp_min.toFixed(0)}&deg; C
 	                    </strong>

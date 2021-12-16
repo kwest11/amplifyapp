@@ -17,27 +17,27 @@ const render = (status: Status): ReactElement => {
       return <h3>{status} ..</h3>;
     case Status.SUCCESS:
     default:
-      return <MyComponent />;
+      return <MyMap />;
   }
 };
 
 
 // Google Map
-const containerStyle = {
-  width: '300px',
-  height: '300px'
-};
-
-function MyComponent(props) {
+function MyMap(props) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   })
 
+  const containerStyle = {
+    width: props.width,
+    height: props.height
+  };
+
   const [map, setMap] = useState(null)
 
-  const center = { lat: 39.583, lng: -79.984 };
-  const zoom = 14;
+  const center = { lat: props.lat, lng: props.lng };
+  const zoom = props.zoom;
 
   // const onLoad = useCallback(function callback(map) {
   //   const bounds = new window.google.maps.LatLngBounds();
@@ -46,6 +46,7 @@ function MyComponent(props) {
   // }, [])
 
   const onLoad = trafficLayer => {
+    console.log('center.lat: ' + center.lat + ' center.lng: ' + center.lng)
     console.log('trafficLayer: ', trafficLayer)
   }
 
@@ -69,28 +70,17 @@ function MyComponent(props) {
 }
 
 function Home(props) {
-  const center = { lat: 39.6, lng: -80 };
-  const zoom = 9;
 
   return (
     <>
       <View>
         <Grid
-          templateColumns="2fr 1fr"
-          templateRows="1fr 1fr 1fr"
+          templateColumns="50% 50%"
+          templateRows="1fr"
           gap="var(--amplify-space-small)"
         >
-          <View>
-            <Heading level={3} color="green" fontWeight="bold">Traffic</Heading>
-            <div style={{ height: '45vh', width: '100%' }}>
-              <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} render={render}>
-                <MyComponent lat={39.6} zoom={zoom}>
-                </MyComponent>
-              </Wrapper>
-            </div>
-          </View>
-          <View>
-            <Heading level={3} color="green" fontWeight="bold">Weather</Heading>
+          <View as="section" columnSpan={2}>
+            <Heading columnspan={2} style={{'text-align': 'center'}} level={3} color="green" fontWeight="bold">Weather</Heading>
 
             <Flex justifyContent="left" alignItems="center">
               <Weather zip='26508' />
@@ -98,39 +88,53 @@ function Home(props) {
 
             </Flex>
           </View>
-       <View columnSpan={2}>
-        <Heading level={3} color="green" fontWeight="bold">Local Traffic Cams</Heading>
-        <Expander type="multiple">
-          <ExpanderItem title="Westover Bridge" value="item-1">
-            <ReactHlsPlayer
-              src="http://162.210.14.137:1935/rtplive/CAM066/playlist.m3u8"
-              autoPlay={true}
-              controls={false}
-              width="50%"
-              height="50%"
-            />
-          </ExpanderItem>
-          <ExpanderItem title="Top of the Hill" value="item-2">
-            <ReactHlsPlayer
-              src="http://162.210.14.137:1935/rtplive/CAM065/playlist.m3u8"
-              autoPlay={true}
-              controls={false}
-              width="50%"
-              height="50%"
-            />
-          </ExpanderItem>
-          <ExpanderItem title="Interchange" value="item-3">
-            <ReactHlsPlayer
-              src="http://162.210.14.137:1935/rtplive/CAM093/playlist.m3u8"
-              autoPlay={true}
-              controls={false}
-              width="50%"
-              height="50%"
-            />
-          </ExpanderItem>
-        </Expander>
-        </View>
-         </Grid>
+          <View as="section" columnSpan={2}>
+            <Grid
+              templateColumns="50% 50%"
+              templateRows="50px 1fr"
+              gap="var(--amplify-space-small)"
+            >
+              <View columnSpan={2} style={{'text-align': 'center'}}>
+                <Heading columnSpan={2} level={3} color="green" fontWeight="bold">Morgantown Traffic</Heading>
+              </View>
+              <View>
+                <Wrapper apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY} render={render}>
+                  <MyMap lat={39.583} lng={-79.984} zoom={12} width='100%' height='300px'>
+                  </MyMap>
+                </Wrapper>
+              </View>
+              <Expander type="multiple">
+                <ExpanderItem title="Westover Bridge" value="item-1">
+                  <ReactHlsPlayer
+                    src="http://162.210.14.137:1935/rtplive/CAM066/playlist.m3u8"
+                    autoPlay={true}
+                    controls={false}
+                    width="50%"
+                    height="50%"
+                  />
+                </ExpanderItem>
+                <ExpanderItem title="Top of the Hill" value="item-2">
+                  <ReactHlsPlayer
+                    src="http://162.210.14.137:1935/rtplive/CAM065/playlist.m3u8"
+                    autoPlay={true}
+                    controls={false}
+                    width="50%"
+                    height="50%"
+                  />
+                </ExpanderItem>
+                <ExpanderItem title="Interchange" value="item-3">
+                  <ReactHlsPlayer
+                    src="http://162.210.14.137:1935/rtplive/CAM093/playlist.m3u8"
+                    autoPlay={true}
+                    controls={false}
+                    width="50%"
+                    height="50%"
+                  />
+                </ExpanderItem>
+              </Expander>
+            </Grid>
+          </View>
+        </Grid>
       </View>
     </>
   );

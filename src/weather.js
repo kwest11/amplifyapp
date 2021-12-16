@@ -8,7 +8,7 @@ class Weather extends React.Component {
     // State
     this.state = {
       apiData: [],
-      apiUrl: `https://api.openweathermap.org/data/2.5/weather?zip=${this.props.zip},US&appid=${process.env.REACT_APP_API_KEY}&units=imperial`,
+      apiUrl: `https://api.openweathermap.org/data/2.5/weather?zip=${this.props.zip},US&appid=${process.env.REACT_APP_OPEN_WEATHER_APP_API_KEY}&units=imperial`,
       weatherIcon: []
     };
     this.fetchApi = this.fetchApi.bind(this);
@@ -20,7 +20,7 @@ class Weather extends React.Component {
   };
 
   fetchWeather(apiUrl) {
-    console.log('Fetching weather' + apiUrl);
+    console.log('Fetching weather: ' + apiUrl);
     this.fetchApi(apiUrl);
 
     if (this.state.weatherIcon && this.state.apiData.weatherIcon > 0) {
@@ -50,7 +50,7 @@ class Weather extends React.Component {
     }
 
   render() {
-    return <div className="App">
+    return <div className="Weather">
       <div className="container">
 
         <div className="card mt-3 mx-auto" style={{ width: '60vw' }}>

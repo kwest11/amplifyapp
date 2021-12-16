@@ -7,12 +7,10 @@ import config from './aws-exports';
 import Timer from './Timer';
 import SkiingWebcams from './skiingWebcams';
 import Weather from './weather';
-import Home from './home';
+import Home from './Home';
 import { Heading, Image, Grid, View, Flex, Text, Divider, Button, useTheme, AmplifyProvider, withAuthenticator, Menu, MenuItem, Tabs, TabItem } from '@aws-amplify/ui-react';
 
 Amplify.configure(config);
-
-
 
 function App({ isPassedToWithAuthenticator, signOut, user }) {
   const [index, setIndex] = React.useState(0);
@@ -48,7 +46,7 @@ function App({ isPassedToWithAuthenticator, signOut, user }) {
       </View>
       <View columnStart={2} columnEnd={-1} >
         <Tabs spacing="relative" currentIndex={index} onChange={(i) => setIndex(i)}>
-          <TabItem title="Home"><Home /></TabItem>
+          <TabItem title="Home"><Home lat="39.6" lon="-80" center="" /></TabItem>
           <TabItem title="Skiing"><SkiingWebcams /></TabItem>
           <TabItem title="Running">I run</TabItem>
         </Tabs>

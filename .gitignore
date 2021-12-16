@@ -1,6 +1,7 @@
 .DS_Store
 build/
 node_modules/.cache/*
+.env
 
 #reactide
 reactide.js

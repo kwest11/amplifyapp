@@ -7,6 +7,7 @@ import Timer from './Timer';
 import { Expander, ExpanderItem, Heading, Image, Grid, View, Flex, Text, Divider, Button, useTheme, AmplifyProvider, withAuthenticator, Menu, MenuItem, Tabs, TabItem } from '@aws-amplify/ui-react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import Weather from './weather';
+import WeatherMap from './WeatherMap';
 import { GoogleMap, useJsApiLoader, TrafficLayer } from '@react-google-maps/api';
 
 const render = (status: Status): ReactElement => {
@@ -80,11 +81,19 @@ function Home(props) {
           gap="var(--amplify-space-small)"
         >
           <View as="section" columnSpan={2}>
-            <Heading columnspan={2} style={{'text-align': 'center'}} level={3} color="green" fontWeight="bold">Weather</Heading>
+            <Heading columnspan={2} style={{ 'text-align': 'center' }} level={3} color="green" fontWeight="bold">Weather in Ashton</Heading>
 
-            <Flex justifyContent="left" alignItems="center">
+            <Flex >
               <Weather zip='26508' />
-              {/*<WeatherMap lat={props.lat} lon={props.lon} zoom='10' width="250px" height="200px" />  */}
+              <View boxShadow="8px 6px 6px 0 #ccc">
+                <Image
+                  width="100%"
+                  height="100%"
+                  objectFit="fill"
+                  src="https://radar.weather.gov/ridge/lite/KPBZ_loop.gif"
+                  alt="Morgantown Radar"
+                />
+              </View>
 
             </Flex>
           </View>
@@ -94,7 +103,7 @@ function Home(props) {
               templateRows="50px 1fr"
               gap="var(--amplify-space-small)"
             >
-              <View columnSpan={2} style={{'text-align': 'center'}}>
+              <View columnSpan={2} style={{ 'text-align': 'center' }}>
                 <Heading columnSpan={2} level={3} color="green" fontWeight="bold">Morgantown Traffic</Heading>
               </View>
               <View>

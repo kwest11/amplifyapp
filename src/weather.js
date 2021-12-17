@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from '@aws-amplify/ui-react';
 
 
 class Weather extends React.Component {
@@ -32,7 +33,6 @@ class Weather extends React.Component {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         this.setState({ apiData: data, 
         weatherIcon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png` })
       })
@@ -50,10 +50,10 @@ class Weather extends React.Component {
     }
 
   render() {
-    return <div className="Weather">
-      <div className="container">
+    return <View className="Weather">
+      <View className="container">
 
-        <div className="card mt-3 mx-auto" style={{ width: '60vw' }}>
+        <View className="card mt-3 mx-auto" width='1fr'>
           {this.state.apiData.main ? (
             <div className="card-body text-center">
               <img
@@ -97,9 +97,9 @@ class Weather extends React.Component {
           ) : (
               <h1>Loading</h1>
             )}
-        </div>
-      </div>
-    </div>
+        </View>
+      </View>
+    </View>
   }
 }
 

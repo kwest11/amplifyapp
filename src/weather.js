@@ -1,8 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from '@aws-amplify/ui-react';
 
 
 class Weather extends React.Component {
+  static propTypes = {
+    zip: PropTypes.any
+  }
 
   constructor(props) {
     super(props);
@@ -25,16 +29,18 @@ class Weather extends React.Component {
     this.fetchApi(apiUrl);
 
     if (this.state.weatherIcon && this.state.apiData.weatherIcon > 0) {
-      this.setState( {weatherIcon: `https://openweathermap.org/img/w/13d.png` })
-    } 
+      this.setState({ weatherIcon: `https://openweathermap.org/img/w/13d.png` })
+    }
   }
 
   fetchApi = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        this.setState({ apiData: data, 
-        weatherIcon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png` })
+        this.setState({
+          apiData: data,
+          weatherIcon: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
+        })
       })
       .catch(err => console.error(err))
   }
@@ -45,9 +51,9 @@ class Weather extends React.Component {
     this.interval = setInterval(() => this.fetchApi(), 500000);
   }
 
-   componentWillUnmount() {
-      clearInterval(this.interval);
-    }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     return <View className="Weather">
@@ -64,7 +70,7 @@ class Weather extends React.Component {
 
               <p className="h2">
                 Current Temp: {this.state.apiData.main.temp.toFixed(0)}&deg; C
-	              </p>
+              </p>
 
               <p className="h5">
                 <i className="fas fa-map-marker-alt"></i>{' '}
@@ -77,13 +83,13 @@ class Weather extends React.Component {
                     <i className="fas fa-temperature-low "></i>{' '}
                     <strong>
                       Min Temp: {this.state.apiData.main.temp_min.toFixed(0)}&deg; C
-	                    </strong>
+                    </strong>
                   </p>
                   <p>
                     <i className="fas fa-temperature-high"></i>{' '}
                     <strong>
                       High Temp: {this.state.apiData.main.temp_max.toFixed(0)}&deg; C
-	                    </strong>
+                    </strong>
                   </p>
                 </div>
                 <div className="col-md-6">
@@ -95,8 +101,8 @@ class Weather extends React.Component {
               </div>
             </div>
           ) : (
-              <h1>Loading</h1>
-            )}
+            <h1>Loading</h1>
+          )}
         </View>
       </View>
     </View>

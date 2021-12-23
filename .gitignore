@@ -4,9 +4,13 @@ node_modules/.cache/*
 .env
 
 *.swp
+*.bak
 
 #reactide
 reactide.js
+
+#VSCode
+.vscode
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend

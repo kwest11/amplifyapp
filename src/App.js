@@ -1,23 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
+import PropTypes from 'prop-types';
+// import logo from './icon.png';
 //import './App.css';
 import '@aws-amplify/ui-react/styles.css';
-import Amplify from 'aws-amplify';
+import {Auth, Amplify} from 'aws-amplify';
 import config from './aws-exports';
-import Timer from './Timer';
 import SkiingWebcams from './skiingWebcams';
-import Weather from './weather';
 import Home from './Home';
-import { Heading, Image, Grid, View, Flex, Text, Divider, Button, useTheme, AmplifyProvider, withAuthenticator, Menu, MenuItem, Tabs, TabItem } from '@aws-amplify/ui-react';
+import { Heading, Image, Grid, View, Flex, Button, AmplifyProvider, withAuthenticator, Tabs, TabItem } from '@aws-amplify/ui-react';
 
 Amplify.configure(config);
 
-function App({ isPassedToWithAuthenticator, signOut, user }) {
+
+export function GetCurrentUser() {
+  console.log("inside getCurrentUser try");
+  Auth.currentAuthenticatedUser()
+    .then(user => {
+      console.log(user);
+      return user;
+    });
+}
+
+export function SecureButton() {
+  console.log("inside secureButton");
+  console.log("user info: " + GetCurrentUser());
+  return (
+  <Button isFullWidth={true} variation="menu" size="small" onClick={() => GetCurrentUser()}>Secure</Button>
+  );
+}
+
+function App({ signOut, user }) {
   const [index, setIndex] = React.useState(0);
   return (
     <Grid
       templateColumns="10% 1fr"
-      templateRows="15% 90% 10%"
+      templateRows="15% 90% 10}%"
       columnGap="0.5rem"
       rowGap="0.5rem"
     >
@@ -40,9 +57,10 @@ function App({ isPassedToWithAuthenticator, signOut, user }) {
         rowSpan={2}
         backgroundColor="var(--amplify-colors-yellow-20)"
       >
-        <Button isFullWidth={true} variation="menu" size="small" onClick={() => setIndex(0)}>Home</Button>
-        <Button isFullWidth={true} variation="menu" size="small" onClick={() => setIndex(1)}>Skiing</Button>
-        <Button isFullWidth={true} variation="menu" size="small" onClick={() => setIndex(2)}>Running</Button>
+        <Button isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(0)}>Home</Button>
+        <Button  isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(1)}>Skiing</Button>
+        <Button isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(2)}>Running</Button>
+        <SecureButton />
       </View>
       <View columnStart={2} columnEnd={-1} >
         <Tabs spacing="relative" currentIndex={index} onChange={(i) => setIndex(i)}>
@@ -67,9 +85,9 @@ function App({ isPassedToWithAuthenticator, signOut, user }) {
   );
 }
 
-const MyComponent = ({ children }) => {
-  const { tokens } = useTheme();
-  return <Text color={tokens.colors.font.tertiary}>{children}</Text>;
-};
+App.propTypes = {
+  signOut: PropTypes.any,
+  user: PropTypes.any
+}
 
 export default withAuthenticator(App);

@@ -63,6 +63,13 @@ class SkiingWebcams extends React.Component {
             width="50%"
             height="50%"
           />
+          <ReactHlsPlayer
+            src="https://b7.hdrelay.com/camera/618972315233cdcad76d7dae/relay/playlist.m3u8"
+            autoPlay={true}
+            controls={false}
+            width="50%"
+            height="50%"
+          />
         </Flex>
         <Divider orientation="horizontal" />
         {/* Wisp */}

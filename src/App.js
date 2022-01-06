@@ -6,6 +6,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {Auth, Amplify} from 'aws-amplify';
 import config from './aws-exports';
 import SkiingWebcams from './skiingWebcams';
+import Running from './Running';
 import Home from './Home';
 import { Heading, Image, Grid, View, Flex, Button, AmplifyProvider, withAuthenticator, Tabs, TabItem } from '@aws-amplify/ui-react';
 
@@ -66,7 +67,7 @@ function App({ signOut, user }) {
         <Tabs spacing="relative" currentIndex={index} onChange={(i) => setIndex(i)}>
           <TabItem title="Home"><Home lat="39.6" lon="-80" center="" /></TabItem>
           <TabItem title="Skiing"><SkiingWebcams /></TabItem>
-          <TabItem title="Running">I run</TabItem>
+          <TabItem title="Running"><Running /></TabItem>
         </Tabs>
       </View>
       <View columnStart={2} columnEnd={-1} backgroundColor="var(--amplify-colors-orange-10)">

@@ -51,8 +51,8 @@ function MyGoogleMap(props) {
   
   
   MyGoogleMap.propTypes = {
-    width: PropTypes.number,
-    height: PropTypes.number,
+    width: PropTypes.string,
+    height: PropTypes.string,
     lat: PropTypes.number,
     lng: PropTypes.number,
     zoom: PropTypes.number

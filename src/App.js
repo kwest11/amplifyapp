@@ -35,7 +35,7 @@ function App({ signOut, user }) {
   return (
     <Grid
       templateColumns="10% 1fr"
-      templateRows="15% 90% 10}%"
+      templateRows="15% 90% 10%"
       columnGap="0.5rem"
       rowGap="0.5rem"
     >
@@ -44,6 +44,7 @@ function App({ signOut, user }) {
         columnSpan={2}
         backgroundColor="var(--amplify-colors-blue-20)"
         boxShadow="8px 6px 6px 0 #ccc"
+        maxHeight="100px"
       >
         <Image
           width="100%"

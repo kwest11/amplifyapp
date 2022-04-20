@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <>
-      <View>
+      <View minHeight="500px" width="100%">
         <Grid
           templateColumns="50% 50%"
           templateRows="1fr"

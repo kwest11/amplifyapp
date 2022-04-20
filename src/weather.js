@@ -69,7 +69,7 @@ class Weather extends React.Component {
               />
 
               <p className="h2">
-                Current Temp: {this.state.apiData.main.temp.toFixed(0)}&deg; C
+                Current Temp: {this.state.apiData.main.temp.toFixed(0)}&deg; F
               </p>
 
               <p className="h5">
@@ -82,13 +82,13 @@ class Weather extends React.Component {
                   <p>
                     <i className="fas fa-temperature-low "></i>{' '}
                     <strong>
-                      Min Temp: {this.state.apiData.main.temp_min.toFixed(0)}&deg; C
+                      Min Temp: {this.state.apiData.main.temp_min.toFixed(0)}&deg; F
                     </strong>
                   </p>
                   <p>
                     <i className="fas fa-temperature-high"></i>{' '}
                     <strong>
-                      High Temp: {this.state.apiData.main.temp_max.toFixed(0)}&deg; C
+                      High Temp: {this.state.apiData.main.temp_max.toFixed(0)}&deg; F
                     </strong>
                   </p>
                 </div>

@@ -41,7 +41,7 @@ function Home() {
                   width="100%"
                   height="100%"
                   objectFit="fill"
-                  src="https://radar.weather.gov/ridge/lite/KPBZ_loop.gif"
+                  src="https://radar.weather.gov/ridge/standard/KPBZ_loop.gif"
                   alt="Morgantown Radar"
                 />
               </View>

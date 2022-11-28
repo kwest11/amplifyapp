@@ -101,7 +101,7 @@ class SkiingWebcams extends React.Component {
       <Weather zip='24934' />
           </View>
           <ReactHlsPlayer
-            src="https://stream.citynet.net:443/Snowshoe/smil:shaverscenter.smil/playlist.m3u8"
+            src="https://stream.citynet.net:443/Snowshoe/smil:boathouse.smil/playlist.m3u8"
             autoPlay={true}
             controls={false}
             width="30%"

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import logo from './icon.png';
-//import './App.css';
-import '@aws-amplify/ui-react/styles.css';
+import './App.css';
+//import '@aws-amplify/ui-react/styles.css';
 import { Auth, Amplify } from 'aws-amplify';
 import config from './aws-exports';
 import SkiingWebcams from './skiingWebcams';

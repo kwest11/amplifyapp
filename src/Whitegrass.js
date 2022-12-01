@@ -38,8 +38,8 @@ class Whitegrass extends React.Component {
       <>
         <View width={this.props.width} height={this.props.height} boxShadow="8px 6px 6px 0 #ccc">
           <Image
-            width="105%"
-            height="105%"
+            width="100%"
+            height="100%"
             objectFit="cover"
             src={this.state.img_src}
             alt="whitegrass 1"

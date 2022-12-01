@@ -8,7 +8,7 @@ import config from './aws-exports';
 import SkiingWebcams from './skiingWebcams';
 import Running from './Running';
 import Home from './Home';
-import { Heading, Image, Grid, View, Flex, Button, AmplifyProvider, withAuthenticator, Tabs, TabItem } from '@aws-amplify/ui-react';
+import { Heading, Image, Grid, View, Flex, Button, AmplifyProvider, withAuthenticator, Tabs, TabItem, Menu, MenuItem, Divider } from '@aws-amplify/ui-react';
 
 Amplify.configure(config);
 
@@ -56,24 +56,29 @@ function App({ signOut, user }) {
           alt="Home"
         />
       </View>
-      {/* Menu */}
-      <View
-        columnStart="1"
-        columnEnd="2"
-        rowStart="2"
-        rowEnd="-1"
-        backgroundColor="var(--amplify-colors-yellow-20)"
-      >
-        <Button isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(0)}>Home</Button>
-        <Button isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(1)}>Skiing</Button>
-        <Button isFullWidth={true} minWidth="100px" variation="menu" size="small" onClick={() => setIndex(2)}>Running</Button>
-        <SecureButton />
-      </View>
       {/* Main */}
-      <View columnStart="2"
+      <View columnStart="1"
         columnEnd="-1"
         rowStart="2"
         rowEnd="4" >
+        <Menu
+          menuAlign="start"
+          size="large"
+        >
+          <MenuItem onClick={() => setIndex(0)}>
+            Home
+          </MenuItem>
+          <MenuItem onClick={() => setIndex(1)}>
+            Skiing
+          </MenuItem>
+          <MenuItem onClick={() => setIndex(2)}>
+            Running
+          </MenuItem>
+          <Divider />
+          <MenuItem isDisabled onClick={() => alert('Delete')}>
+            Secure
+          </MenuItem>
+        </Menu>
         <Tabs spacing="relative" currentIndex={index} onChange={(i) => setIndex(i)}>
           <TabItem title="Home"><Home lat="39.6" lon="-80" center="" /></TabItem>
           <TabItem title="Skiing"><SkiingWebcams /></TabItem>

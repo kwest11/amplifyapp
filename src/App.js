@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import { Auth, Amplify } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import config from './aws-exports';
-import MainHome from './MainHome';
+import { MainHome, GetCurrentUser} from './MainHome';
 import Login from './Login';
 import PrivacyPolicy from "./PrivacyPolicy";
 
 import {
-  //   Link,
      BrowserRouter,
      Route,
      Routes
@@ -16,8 +15,6 @@ import {
 import { Button, Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 
 Amplify.configure(config);
-
-
 
 
 export function SecureButton() {

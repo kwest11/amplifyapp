@@ -92,13 +92,15 @@ class SkiingWebcams extends React.Component {
               </Link>
               <Weather zip='21541' />
             </Card>
-            <ReactHlsPlayer
-              src="https://55507e0501d25.streamlock.net/live/railey2.stream/playlist.m3u8"
-              autoPlay={true}
-              controls={false}
-              width="75%"
-              height="50%"
-            />
+            <Flex direction="column" alignItems="flex-start">
+              <ReactHlsPlayer
+                src="https://55507e0501d25.streamlock.net/live/railey2.stream/playlist.m3u8"
+                autoPlay={true}
+                controls={false}
+                width="100%"
+                height="50%"
+              />
+            </Flex>
           </Flex>
         </Card>
 

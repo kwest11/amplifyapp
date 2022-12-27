@@ -94,7 +94,7 @@ class SkiingWebcams extends React.Component {
             </Card>
             <Flex direction="column" alignItems="flex-start">
               <ReactHlsPlayer
-                src="https://55507e0501d25.streamlock.net/live/railey2.stream/playlist.m3u8"
+                src="https://stream.resortcams.com/live/railey2.stream/playlist.m3u8"
                 autoPlay={true}
                 controls={false}
                 width="100%"

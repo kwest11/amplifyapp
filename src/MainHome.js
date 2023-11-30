@@ -2,17 +2,14 @@ import React from 'react';
 import SkiingWebcams from './skiingWebcams';
 import Running from './Running';
 import Home from './Home';
+// import PurpleFiddleEvents from './FacebookComponents';
+// import NytNewsTicker from './NytNewsTicker';
 //import '@aws-amplify/ui-react/styles.css';
 // import logo from './icon.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
-import {
-    Heading, Authenticator,
-    Image, Grid, View, Flex,
-    // Button,
-
-    AmplifyProvider, Tabs, TabItem, Menu, MenuItem, Divider, useAuthenticator
-} from '@aws-amplify/ui-react';
+import {Heading, Authenticator, Image, Grid, View, Flex,
+    AmplifyProvider, Tabs, TabItem, Menu, MenuItem, Divider, useAuthenticator} from '@aws-amplify/ui-react';
 
 export function GetCurrentUser() {
     console.log("inside getCurrentUser try");
@@ -84,6 +81,9 @@ export function MainHome() {
                     <MenuItem onClick={() => navigate('/privacy-policy')}>
                         Privacy Policy
                     </MenuItem>
+                    <MenuItem onClick={() => navigate('/about')}>
+                        About
+                    </MenuItem>
                     <Divider />
                     {route !== 'authenticated' ? (
                         <MenuItem onClick={() => navigate('/login')}>Login</MenuItem>
@@ -102,7 +102,8 @@ export function MainHome() {
                 columnEnd="-1"
                 rowStart="4"
                 rowEnd="-1" backgroundColor="var(--amplify-colors-orange-10)">
-
+                    {/* <NytNewsTicker /> */}
+                    {/* <PurpleFiddleEvents /> */}
                 <div>
 
                     <AmplifyProvider>
@@ -110,6 +111,7 @@ export function MainHome() {
                             <Heading level={5} color="green" fontWeight="bold">Hello {user.username == 'kody' ? 'Kody!' : user.username}</Heading>
                             {/* <Button variation="link" size="small" onClick={logOut}>Sign out</Button> */}
                             <Link to="/privacy-policy">Privacy Policy</Link>
+                            <Link to="/about">About</Link>
                         </Flex>
 
                     </AmplifyProvider>

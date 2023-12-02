@@ -22,7 +22,7 @@ class Running extends React.Component {
                         <iframe minHeight="454" width='100%' height='70%' frameBorder='0' allowtransparency='true' scrolling='no' src='https://mountykoder.grafana.net/public-dashboards/c31c6848e21145d0bcc76f312759c1b6'></iframe>
     */}
 
-                        <img src="https://srikanthg.grafana.net/d/v6zqp4f7k/brilliantpet-dashboard?orgId=1&from=1645666732065&to=1645677532065"></img>
+                        <img src="https://mountykoder.grafana.net/d/ce8d9fd5-b9c4-4d13-a317-b6f9ee15d980/health-dashboard?orgId=1&from=1672549200000&to=1704085199999"></img>
                     </View>
                 </Grid>
             </View>

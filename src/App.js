@@ -6,6 +6,7 @@ import config from './aws-exports';
 import { MainHome, GetCurrentUser} from './MainHome';
 import Login from './Login';
 import PrivacyPolicy from "./PrivacyPolicy";
+import About from "./About";
 
 import {
      BrowserRouter,
@@ -31,6 +32,7 @@ function MyRoutes() {
       <Routes>
           <Route path="/" index element={<MainHome />} />
           <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route exact path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>

@@ -18,9 +18,10 @@ class Running extends React.Component {
                         <iframe minHeight="160px" width='100%' height="30%" frameBorder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/27660355/activity-summary/61367fa622b91661dbe894320521bdfe7e0f0529'></iframe>
                         {/* Strava - Activities */}
                         <iframe minHeight="454" width='100%' height='70%' frameBorder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/27660355/latest-rides/61367fa622b91661dbe894320521bdfe7e0f0529'></iframe>
-                        {/* Grafana - Health Dashboard */}
+                        {/* Grafana - Health Dashboard 
                         <iframe minHeight="454" width='100%' height='100%' frameBorder='0' allowtransparency='true' scrolling='no' src='https://mountykoder.grafana.net/dashboard/snapshot/L525Lb991cQkfcK7DmwWpvOeHgDZaWPR'></iframe>
                         {/* <img src="https://mountykoder.grafana.net/d/ce8d9fd5-b9c4-4d13-a317-b6f9ee15d980/health-dashboard?orgId=1&from=1672549200000&to=1704085199999"></img> */}
+                        <iframe src="https://mountykoder.grafana.net/d-solo/ce8d9fd5-b9c4-4d13-a317-b6f9ee15d980/health-dashboard?orgId=1&from=1672549200000&to=1704085199999&panelId=2" width="450" height="200"></iframe>
                     </View>
                 </Grid>
             </View>

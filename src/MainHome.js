@@ -8,11 +8,14 @@ import Home from './Home';
 // import logo from './icon.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
-import {Heading, Authenticator, Image, Grid, View, Flex,
-    AmplifyProvider, Tabs, TabItem, Menu, MenuItem, Divider, useAuthenticator} from '@aws-amplify/ui-react';
+import {Heading, Authenticator, 
+    // Image, 
+    Grid, View, Flex,
+    AmplifyProvider, Tabs, TabItem, Menu, MenuItem, Divider, useAuthenticator, useTheme} from '@aws-amplify/ui-react';
 
 export function GetCurrentUser() {
     console.log("inside getCurrentUser try");
+    
     Auth.currentAuthenticatedUser()
         .then(user => {
             console.log(user);
@@ -25,6 +28,7 @@ export function MainHome() {
     const {  signOut } = useAuthenticator((context) => [
          context.signOut,
      ]);
+    const { tokens } = useTheme();
     const navigate = useNavigate();
     function logOut() {
         console.log("Logging out of " + GetCurrentUser());
@@ -38,8 +42,12 @@ export function MainHome() {
         <Authenticator>
       {({ user }) => (
         <Grid
-            templateColumns="1fr 3fr 1fr"
-            templateRows="1fr 3fr 1fr"
+            // templateColumns="1fr 3fr 1fr"
+            // templateRows="1fr 3fr 1fr"
+            templateColumns={{ base: '1fr 1fr', medium: '1fr 1fr', large: '1fr 3fr 1fr' }}
+            //templateRows={{ base: 'repeat(3, 10rem)', large: 'repeat(2, 10rem)' }}
+            templateRows="2% 97% 1%"
+            gap={tokens.space.small}
             columnGap="0.5rem"
             rowGap="0.5rem"
         >
@@ -52,22 +60,13 @@ export function MainHome() {
                 rowEnd="1"
                 backgroundColor="var(--amplify-colors-blue-20)"
                 boxShadow="8px 6px 6px 0 #ccc"
+                objectFit="none"
             >
-                <Image
-                    width="100%"
-                    height="100%"
-                    objectFit="cover"
-                    src="https://www.morgantownpartnership.com/wp-content/uploads/Area-Pano-scaled.jpeg"
-                    alt="Home" />
-            </View>
-            {/* Main */}
-            <View columnStart="1"
-                columnEnd="-1"
-                rowStart="2"
-                rowEnd="4">
                 <Menu
-                    menuAlign="start"
+                    menuAlign="end"
                     size="large"
+                    columnStart="1"
+                    rowStart="2"
                 >
                     <MenuItem onClick={() => setIndex(0)}>
                         Home
@@ -91,17 +90,35 @@ export function MainHome() {
                         <MenuItem onClick={() => logOut()}>Logout</MenuItem>
                     )}
                 </Menu>
+                {/* <Image
+                    // width="100%"
+                    // height="100%"
+                    objectFit="contain"
+                    rowSpan={2}
+                    rowStart="1"
+                    columnStart="2"
+                    src="https://www.morgantownpartnership.com/wp-content/uploads/Area-Pano-scaled.jpeg"
+                    alt="Home" /> */}
+            </View>
+            {/* Main */}
+            <View columnStart="1"
+                columnEnd="-1"
+                rowStart="2">
+                    <Flex direction='row'>
+                
                 <Tabs spacing="relative" currentIndex={index} onChange={(i) => setIndex(i)}>
                     <TabItem title="Home"><Home lat="39.6" lon="-80" center="" /></TabItem>
                     <TabItem title="Skiing"><SkiingWebcams /></TabItem>
                     <TabItem title="Running"><Running /></TabItem>
                 </Tabs>
+                </Flex>
             </View>
             {/* Footer */}
             <View columnStart="1"
                 columnEnd="-1"
-                rowStart="4"
+                rowStart="3"
                 rowEnd="-1" backgroundColor="var(--amplify-colors-orange-10)">
+
                     {/* <NytNewsTicker /> */}
                     {/* <PurpleFiddleEvents /> */}
                 <div>
